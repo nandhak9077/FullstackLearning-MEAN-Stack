@@ -18,7 +18,8 @@ const upload = require ('../middleware/fileUpload')
 router.post('/createNote',middle.auth,  note.createNote);
 router.get("/getNotes/:userId",middle.auth, note.getNotes);
 router.put('/isTrashed',middle.auth, note.isTrashed); 
-router.post('/deleteNote',middle.auth, note.deleteNote);
+router.post('/deleteNote',middle.auth,  note.deleteNote);
+router.post('/emptyTrash',middle.auth,  note.erashTrash);
 
 router.put('/updateColor', middle.auth, note.updateColor);
 router.put('/reminder',middle.auth,note.reminder);

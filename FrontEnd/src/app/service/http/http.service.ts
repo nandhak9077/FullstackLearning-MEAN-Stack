@@ -142,5 +142,17 @@ export class HttpService {
         // formData.append('noteimage', this.fileToUpload, this.fileToUpload.name);
         return this.http.post(this.apiBaseurl + 'sequence' + '/' + userID, data,httpOptions);
         }
+
+
+        postWithoutToken(options) {
+          const httpOptions = {
+            headers: new HttpHeaders({
+              'Content-Type': 'application/json'
+            })
+          };
+          return this.http.post(this.apiBaseurl + options.url, options.body, httpOptions);
+        }
+
+
      
 }

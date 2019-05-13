@@ -172,6 +172,33 @@ exports.deleteNote = (req, res) => {
     }
 };
 
+/**************************************************************************
+ * @description: To delete note Permently
+ * @param : req (request from client)
+ * @param : res (response from server)
+ ***************************************************************************/
+exports.erashTrash = (req, res) => {
+    try {
+        
+            var responseResult = {};
+            
+            noteService.erashTrash(req, (err, result) => {
+                if (err) {
+                    responseResult.status = false;
+                    responseResult.error = err;
+                    res.status(500).send(responseResult);
+                }
+                else {
+                    responseResult.status = true;
+                    responseResult.data = result;
+                    res.status(200).send(responseResult);
+                }
+            })
+        }
+    catch (error) {
+        res.send(error);
+    }
+}
 /*****************************************************************************************
  * @description: To delete note and store the deleted note in trash
  * @param : req

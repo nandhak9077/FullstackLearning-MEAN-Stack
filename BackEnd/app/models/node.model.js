@@ -172,6 +172,24 @@ noteModel.prototype.deleteNote = (data, callback) => {
     }
   );
 };
+/*********************************************************************
+ * @description:
+ * @param : data
+ * @param : callback
+ **********************************************************************/
+
+
+noteModel.prototype.erashTrash = (req, callback) => {
+  console.log("in model", req.body);
+  note.deleteMany({ trash : true },(err, result) => {
+      if (err) {
+          callback(err)
+      } else {
+          console.log("Trash", result)
+          return callback(null, result)
+      }
+  })
+};
 /***************************************************************************
  *
  * @param : noteID

@@ -32,7 +32,13 @@ export class NoteServiceService {
   doPin(data) {
     return this.http.put('isPinned', data)
   }
-
+  emptyTrash(requestBody) {
+    const option = {
+      url: 'emptyTrash',
+      body: requestBody
+    };
+    return this.http.postWithoutToken(option);
+  }
 
   getView() {
     this.gridview();

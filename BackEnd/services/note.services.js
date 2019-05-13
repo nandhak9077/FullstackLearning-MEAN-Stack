@@ -63,7 +63,12 @@ exports.updateColor = (paramID, paramData, callback) => {
         }
     });
 };
-
+/**************************************************************************
+ *
+ * @param : paramID
+ * @param : paramData
+ * @param : callback
+ **************************************************************************/
 exports.deleteNote = (noteID, callback) => {
     noteModel.deleteNote(noteID, (err, result) => {
         if (err) {
@@ -76,6 +81,23 @@ exports.deleteNote = (noteID, callback) => {
     });
 };
 
+/**************************************************************************
+ *
+ * @param : paramID
+ * @param : paramData
+ * @param : callback
+ **************************************************************************/
+
+exports.erashTrash = (req, callback) => {
+    console.log("in services",req.body);
+    noteModel.erashTrash(req, (err, result) => {
+        if (err) {
+            callback(err);
+        } else {
+            return callback(null, result)
+        }
+    })
+}
 /**********************************************************************
  *
  * @param : paramID

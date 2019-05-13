@@ -2,6 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { NoteServiceService } from "../../service/noteService/note-service.service";
 import { HttpService } from "../../service/http/http.service";
 import { from } from "rxjs";
+import { MatDialog } from '@angular/material';
+import { EmptytrashComponent } from '../emptytrash/emptytrash.component';
 
 @Component({
   selector: "app-trash",
@@ -11,7 +13,8 @@ import { from } from "rxjs";
 export class TrashComponent implements OnInit {
   constructor(
     private noteService: NoteServiceService,
-    public http: HttpService
+    public http: HttpService,
+    private dialog : MatDialog
   ) { }
 
   more = "trash";
@@ -80,4 +83,15 @@ export class TrashComponent implements OnInit {
   //     }),
   //     err => console.log(err);
   // }
+  openDialog(deletedcards): void {
+    const dialogRef = this.dialog.open(EmptytrashComponent, {
+      width: '350px',
+      data: {cards:deletedcards}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed here');
+      this.cards = result;
+    });
+  } 
 }

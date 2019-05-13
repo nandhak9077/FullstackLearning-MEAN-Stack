@@ -44,6 +44,7 @@ import { AngularFireModule } from '@angular/fire';
 import { MessagingService } from './shared/messaging.service';
 import { environment } from '../environments/environment';
 import { AsyncPipe } from '../../node_modules/@angular/common';
+import { EmptytrashComponent } from '../app/components/emptytrash/emptytrash.component';
 
 
 @NgModule({
@@ -69,6 +70,7 @@ import { AsyncPipe } from '../../node_modules/@angular/common';
     ImagecropperComponent,
     LabelsComponent,
     LabelseditComponent,
+    EmptytrashComponent,
     
 
 
@@ -103,6 +105,10 @@ import { AsyncPipe } from '../../node_modules/@angular/common';
     // GridModule
   ],
   providers: [MessagingService, AsyncPipe],
+  entryComponents: [
+ EmptytrashComponent 
+   
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
