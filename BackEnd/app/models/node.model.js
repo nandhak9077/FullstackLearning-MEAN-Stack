@@ -46,6 +46,9 @@ var noteSchema = new mongoose.Schema(
     notemessage: {
       type : String
     },
+    sequence: {
+      type : Number
+    },
     
     label: [
       {
@@ -115,7 +118,7 @@ noteModel.prototype.getNotes = (id, callback) => {
       console.log("", result);
       return callback(null, result);
     }
-  });
+  }).sort({sequence:0});
 };
 module.exports = new noteModel();
 
@@ -629,4 +632,33 @@ noteModel.prototype.noteimage = (req, callback) => {
   });
 
 }
+noteModel.prototype.sequence = (userId, req, callback) => {
+
+  note.find(
+    {
+    userId: userId
+    },
+    (err, result) => {
+    if (err) {
+    callback(err);
+    } else {
+    for(let i=0;i<req.body.length;i++){
+    note.updateOne(
+    {_id:req.body[i]._id},
+    {
+    sequence : i
+    },(err, data) => {
+    if (err) {
+    console.log("Error in");
+    return callback(err);
+    } else {
+    console.log("adadad",data)
+    }
+    });
+    }
+    return callback(null, result);
+    }
+    }
+    );
+};
 module.exports = new noteModel();

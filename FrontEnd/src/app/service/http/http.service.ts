@@ -128,5 +128,19 @@ export class HttpService {
       // formData.append('noteimage', this.fileToUpload, this.fileToUpload.name);
       return this.http.post(this.apiBaseurl + 'userimage' + '/' + userID, formData);
       }
+
+      sequence(data){
+        const userID=localStorage.getItem('userid') 
+        console.log("immm",data);
+        const httpOptions = {
+          headers: new HttpHeaders({
+            // "Content-Type": "application/json",
+            token: localStorage.getItem("token")
+          })
+        };
+       
+        // formData.append('noteimage', this.fileToUpload, this.fileToUpload.name);
+        return this.http.post(this.apiBaseurl + 'sequence' + '/' + userID, data,httpOptions);
+        }
      
 }

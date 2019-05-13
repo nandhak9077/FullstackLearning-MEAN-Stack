@@ -54,6 +54,7 @@ export class DisplaynoteComponent implements OnInit, OnChanges {
   pin;
   @Input() cond;
   pinnedValue;
+  item:any[];
 
   model;
   flag1 = true;
@@ -282,7 +283,16 @@ export class DisplaynoteComponent implements OnInit, OnChanges {
   }
 
 
-  drop(event: CdkDragDrop<any[]>) {
-    moveItemInArray(this.array, event.previousIndex, event.currentIndex);
+  drop(event: CdkDragDrop<any[]>,item) {
+    console.log("nmbxcnmvb",item);
+    
+    moveItemInArray(this.cards, event.previousIndex, event.currentIndex);
+    this.http.sequence(item).subscribe(
+          data => {
+            console.log(data);
+                    // this.cardRestore(card)
+          },
+          err => console.log(err)
+        );
   }
 }

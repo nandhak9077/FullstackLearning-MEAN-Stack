@@ -63,7 +63,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   islist;
   isClicked;
   changeview() {
-    // debugger
+    
     if (this.islist) {
       this.islist = false;
       console.log("list", this.islist);

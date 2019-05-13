@@ -346,4 +346,16 @@ exports.noteimage = (data, callback) => {
     })
 }
 
+exports.sequence = (userid, paramData, callback) => {
+    // console.log("in services paramID & param Data -->", paramID, paramData);
+    noteModel.sequence(userid, paramData, (err, result) => {
+        if (err) {
+            // console.log("service error");
+            callback(err);
+        } else {
+            return callback(null, result);
+        }
+    });
+};
+
 

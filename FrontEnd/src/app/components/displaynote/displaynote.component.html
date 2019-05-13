@@ -1,5 +1,7 @@
 
-<div cdkDrag cdkDropList (cdkDropList)="drop($event)" *ngFor="let array of cards | search: Search" fxLayout="row wrap" fxLayoutAlign="start center" fxLayout.xs="column" >
+<!-- <div cdkDrag cdkDropList (cdkDropList)="drop($event)" *ngFor="let array of cards | search: Search" fxLayout="row wrap" fxLayoutAlign="start center" fxLayout.xs="column" > -->
+ <div cdkDropList [cdkDropListData]="cards" [cdkDropListConnectedTo]="secondList" #firstList="cdkDropList" (cdkDropListDropped)="drop($event,cards)" fxLayout="row wrap" fxLayoutAlign="start center" fxLayout.xs="column">
+        <div cdkDrag *ngFor="let array of cards | search: Search">  
   <mat-card [style.backgroundColor]="array.color" fxFlex.xs="100" fxLayout="column" class="matcard" fxFlex="45"
     fxFlexOffset.xl="10" >
     <div fxFlex="55" fxFlexOffset.xl="20" fxFlex.xs="97" fxLayout="row" fxLayoutAlign="start center">
@@ -103,5 +105,6 @@
         [type]="type"></app-iconlist>
     </div>
   </mat-card>
+  </div>
 </div>
 

@@ -35,7 +35,9 @@ router.post('/deleteLabel', middle.auth, note.deleteLabel);
 router.put('/updateLabel', middle.auth, note.updateLabel);
 
 router.post('/saveLabelToNote', middle.auth,note.saveLabelToNote);
-router.post('/deleteLabelToNote', middle.auth,note.deleteLabelToNote)
+router.post('/deleteLabelToNote', middle.auth,note.deleteLabelToNote);
+
+router.post('/sequence/:userId', middle.auth,note.sequence);
 
 
 router.post('/noteimage/:noteID' ,upload.single('image'), note.noteimage);
