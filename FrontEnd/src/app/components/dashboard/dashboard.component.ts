@@ -33,7 +33,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   labelList: any;
   email: any;
   username: string;
-  img = localStorage.getItem('image');
+  img: string;
   labelsList: any
   private _mobileQueryListener: () => void;
 
@@ -58,6 +58,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.getLabels()
     this.islist = true;
     this.isClicked = false;
+    this.img = localStorage.getItem('profilepic');
   }
   islist;
   isClicked;
@@ -193,7 +194,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     }
   }
 
-  sendLable(lable){
+  sendLable(lable) {
     this.data.sendLable(lable)
   }
 }

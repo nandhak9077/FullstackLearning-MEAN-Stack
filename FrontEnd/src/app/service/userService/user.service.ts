@@ -25,7 +25,7 @@ export class UserService {
     return this.service.postWithToken(option);
   }
   profilePic(body: any) {
-    // console.log("res @ user service===>",body);
-    return this.service.put("setProfilePic", body)
+    console.log("res @ user service===>",body);
+    return this.service.putpic("userimage",body)
   }
 }

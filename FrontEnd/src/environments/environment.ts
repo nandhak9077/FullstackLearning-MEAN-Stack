@@ -13,9 +13,9 @@ export const environment = {
     apiKey: "AIzaSyA9ar6Pay0koIYtTlMNM9HZ5yRCGE_jYS8",
     authDomain: "fundoonote-58387.firebaseapp.com",
     databaseURL: "https://fundoonote-58387.firebaseio.com",
-    projectId: "fundoonote-58387",
+    projectId: "keep-14b7d",
     storageBucket: "fundoonote-58387.appspot.com",
-    messagingSenderId: "663067545899"
+    messagingSenderId: "226083562030"
   }
 };
 

@@ -78,10 +78,7 @@ export class NoteServiceService {
   saveLabelToNote(body) {
     return this.http.postJSON('saveLabelToNote', body)
   }
- saveCollaboratorsToNote(body){
-   return this.http.postJSON('saveCollaborator', body)
- }
-
+ 
 //  getNotesOfLabel(label){
 //   return this.http.postJSON('getNotes'+label,"")
 // }

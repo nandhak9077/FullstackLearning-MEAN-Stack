@@ -220,36 +220,58 @@ module.exports.resetPassword = (req, res) => {
  * @param : res (response from server)
  * 
  **********************************************************************************/
-exports.setProfilePic = (req, res) => {
-    try {
+// exports.setProfilePic = (req, res) => {
+//     try {
         
-        // console.log("user controller",req);
-        var responseResult = {};
-        // console.log("userid -->",req.decoded.id);
-        userId = req.decoded.id;
-        // console.log("req dzsffxddfgdfgdfg===>",req.file.location);
-        let image =(req.file.location);
+//         // console.log("user controller",req);
+//         var responseResult = {};
+//         // console.log("userid -->",req.decoded.id);
+//         userId = req.decoded.id;
+//         // console.log("req dzsffxddfgdfgdfg===>",req.file.location);
+//         let image =(req.file.location);
 
-        console.log("image -->",image);
-        userService.setProfilePic(userId, image, (err, result) => {
-            console.log("result in controler profile pic==?",result);
+//         console.log("image -->",image);
+//         userService.setProfilePic(userId, image, (err, result) => {
+//             console.log("result in controler profile pic==?",result);
             
-            if (err) {
-                responseResult.success = false;
-                responseResult.error = err;
-                res.status(500).send(responseResult)
-            } else {
-                responseResult.status = true;
-                responseResult.data = result;
-                // console.log("******************************",responseResult);
+//             if (err) {
+//                 responseResult.success = false;
+//                 responseResult.error = err;
+//                 res.status(500).send(responseResult)
+//             } else {
+//                 responseResult.status = true;
+//                 responseResult.data = result;
+//                 // console.log("******************************",responseResult);
                 
-                res.status(200).send(responseResult);
+//                 res.status(200).send(responseResult);
+//             }
+//         })
+//     } catch (error) {
+//         res.send(error);
+//     }
+// }
+
+
+module.exports.userimage= (req, res) => {
+    console.log("\npic location --------<",req.file.location);
+  
+    userService.userimage(req, (err, data) => {
+            if (err) {
+                console.log(err);
+                return res.status(500).send({
+                    message: err
+                })
+            } else {
+                console.log("message is coming here",data)
+                return res.status(200).send({
+                    
+                    message: data
+                });
             }
+    
         })
-    } catch (error) {
-        res.send(error);
+    
     }
-}
 
 
 

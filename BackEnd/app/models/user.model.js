@@ -27,7 +27,7 @@ var userSchema = new mongoSchema({
     "lastname": { type: String, required: [true, "LastName is required"] },
     "email": { type: String, required: [true, "Email is required"] },
     "password": { type: String, required: [true, "password is required"] },
-    "profilePic": { type: String}
+    "userimage": { type: String}
 }, {
         timestamps: true //mongoose has created this option to add automatically two fields - createdAt and updatedAt
     });
@@ -64,7 +64,7 @@ usermodel.prototype.register = (body, callback) => {
                 "lastname": body.lastname,
                 "email": body.email,
                 "password": hash(body.password),
-                "profilePic": ""
+               
             });
             newUser.save((err, result) => {
                 if (err) {
@@ -162,24 +162,44 @@ usermodel.prototype.resetPassword = (req, callback) => {
  * @param : callback 
  * 
  **************************************************************************************************/
-usermodel.prototype.setProfilePic = (userId, image, callback) => {
-    console.log("userId------------>",userId);
-    console.log("image------------>",image);
-    user.findOneAndUpdate({
-            _id: userId
-        }, {
-            $set:{
-                profilePic: image
-            }
+// usermodel.prototype.setProfilePic = (userId, image, callback) => {
+//     console.log("userId------------>",userId);
+//     console.log("image------------>",image);
+//     user.findOneAndUpdate({
+//             _id: userId
+//         }, {
+//             $set:{
+//                 profilePic: image
+//             }
+//         },
+//         (err, result) => {
+//             if (err) {
+//                 callback(err)
+//             } else {
+//                 console.log("updated user profile image successfully...",result)
+//                 return callback(null, image)
+//             }
+//         });
+// };
+usermodel.prototype.userimage = (req, callback) => {
+    
+    // updateOne() Updates a single document within the collection based on the filter.
+    console.log("request in model... ==>",req.params.userID);
+    
+    user.findOneAndUpdate({ _id: req.params.userID },{
+        $set :{
+            userimage : req.file.location
         },
-        (err, result) => {
-            if (err) {
-                callback(err)
-            } else {
-                console.log("updated user profile image successfully...",result)
-                return callback(null, image)
-            }
-        });
-};
+    } , (err, data) => {
+        if (err) {
+            console.log("Error in");
+            return callback(err);
+        } else {
+            console.log("adadad",data)
+            return callback(null, data);
+        }
+    });
+
+}
 
 module.exports = new usermodel();

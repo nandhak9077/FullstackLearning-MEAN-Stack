@@ -80,18 +80,27 @@ exports.resetPassword = (req, callback) => {
  * @param : callback
  *  
  *********************************************************************************************************/
-exports.setProfilePic = (paramID, image, callback) => {
-     console.log("in services",image);
-    try {
-        userModel.setProfilePic(paramID, image, (err, result) => {
-            if (err) {
-                console.log("service error in setProfile pic");
-                callback(err);
-            } else {
-                 callback(null, result)
-            }
-        })
-    } catch (error) {
-        callback.send(error);
-    }
+// exports.setProfilePic = (paramID, image, callback) => {
+//      console.log("in services",image);
+//     try {
+//         userModel.setProfilePic(paramID, image, (err, result) => {
+//             if (err) {
+//                 console.log("service error in setProfile pic");
+//                 callback(err);
+//             } else {
+//                  callback(null, result)
+//             }
+//         })
+//     } catch (error) {
+//         callback.send(error);
+//     }
+// }
+exports.userimage = (data, callback) => {
+    userModel.userimage(data, (err, result) => {
+        if (err) {
+            return callback(err);
+        } else {
+            return callback(null, result);
+        }
+    })
 }

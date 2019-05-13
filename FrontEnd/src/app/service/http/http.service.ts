@@ -57,6 +57,7 @@ export class HttpService {
     return this.http.post(url, body, httpOptions);
   }
   put(url: string, body: any): any {
+    //const uid = localStorage.getItem('userid')
     url = this.apiBaseurl + url;
     const httpOptions = {
       headers: new HttpHeaders({
@@ -66,6 +67,19 @@ export class HttpService {
     };
     return this.http.put(url, body, httpOptions);
   }
+  putpic(url: string, body: any): any {
+    const uid = localStorage.getItem('userid')
+    url = this.apiBaseurl + url +'/'+ uid;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        // "Content-Type": "application/json",
+        token: localStorage.getItem("token")
+      })
+    };
+    return this.http.post(url, body);
+  }
+
+
 
   getHttp(url) {
     const userid=localStorage.getItem('userid');
@@ -96,7 +110,7 @@ export class HttpService {
     };
     return this.http.post(url, body, httpOptions);
   }
-  noteimage(image:File,noteID){
+    noteimage(image:File,noteID){
     // this.fileToUpload = image; 
     console.log("immm",image);
     // let formData = new FormData(); 
@@ -105,4 +119,14 @@ export class HttpService {
     // formData.append('noteimage', this.fileToUpload, this.fileToUpload.name);
     return this.http.post(this.apiBaseurl + 'noteimage' + '/' + noteID, formData);
     }
+    userimage(image:File,userID){
+      // this.fileToUpload = image; 
+      console.log("immm",image);
+      // let formData = new FormData(); 
+      const formData = new FormData();
+      formData.append('image',image);
+      // formData.append('noteimage', this.fileToUpload, this.fileToUpload.name);
+      return this.http.post(this.apiBaseurl + 'userimage' + '/' + userID, formData);
+      }
+     
 }

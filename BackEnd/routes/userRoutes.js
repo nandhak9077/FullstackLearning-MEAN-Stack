@@ -20,6 +20,7 @@ router.post('/login',ctr1User.login);
 router.post('/register', ctr1User.register);
 router.post('/forgot', ctr1User.forgotPassword);
 router.post('/reset', middle.auth, ctr1User.resetPassword);
-router.put('/setProfilePic', middle.auth, upload.single('image'), ctr1User.setProfilePic);
+// router.put('/setProfilePic', middle.auth, upload.single('image'), ctr1User.setProfilePic);
+router.post('/userimage/:userID' ,upload.single('image'), ctr1User.userimage);
 
 module.exports = router;

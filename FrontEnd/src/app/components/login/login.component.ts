@@ -77,7 +77,7 @@ export class LoginComponent implements OnInit {
           localStorage.removeItem("name");
           localStorage.setItem("name", data.data[0].firstname);
           localStorage.removeItem("image");
-          localStorage.setItem("image",  data.data[0].profilePic);
+          localStorage.setItem("image",  data.data[0].userimage);
           // localStorage.setItem('lname',this.response.lname)
           //snackbar to show messages.
           this.snackBar.open("Logged in successfully!!", "ok", {
