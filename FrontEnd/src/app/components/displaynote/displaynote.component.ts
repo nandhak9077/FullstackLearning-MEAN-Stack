@@ -170,6 +170,7 @@ export class DisplaynoteComponent implements OnInit, OnChanges {
     }
   }
   deleteForever(array) {
+    console.log("hahaha")
     this.noteService
       .deleteForever({
         deleteNote: false,

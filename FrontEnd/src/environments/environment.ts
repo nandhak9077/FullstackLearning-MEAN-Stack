@@ -14,7 +14,7 @@ export const environment = {
     authDomain: "fundoonote-58387.firebaseapp.com",
     databaseURL: "https://fundoonote-58387.firebaseio.com",
     projectId: "keep-14b7d",
-    storageBucket: "fundoonote-58387.appspot.com",
+    storageBucket: "googlekeepnan1",
     messagingSenderId: "226083562030"
   }
 };

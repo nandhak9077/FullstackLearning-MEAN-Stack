@@ -144,6 +144,7 @@ export class IconlistComponent implements OnInit {
   }
 
   deleteNote(card) {
+    console.log("delete note",card._id)
     this.notes
       .deleteNote({
         trash: true,

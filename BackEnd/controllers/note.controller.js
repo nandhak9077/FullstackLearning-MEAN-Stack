@@ -192,7 +192,8 @@ exports.isTrashed = (req, res) => {
         } else {
             var responseResult = {};
             noteID = req.body.noteID;
-            noteService.isTrashed(noteID, (err, result) => {
+            trash = req.body.trash;
+            noteService.isTrashed(noteID,trash, (err, result) => {
                 if (err) {
                     responseResult.status = false;
                     responseResult.error = err;

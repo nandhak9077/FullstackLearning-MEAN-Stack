@@ -222,23 +222,44 @@ noteModel.prototype.getTrashStatus = (id, callback) => {
  * @param : trashStatus
  * @param : callback
  *****************************************************************************************/
+// noteModel.prototype.isTrashed = (noteID, trashNote, callback) => {
+//   // console.log("dtaa in getrash notes==>",trashNote)
+//   // console.log("dtaa in getrash notes==>",noteID)
+//   note.findOneAndUpdate(
+//     {
+//       _id: noteID
+//     },
+//     {
+//       $set: {
+//         trash: trashNote.status
+//       }
+//     },
+//     (err, result) => {
+//       if (err) {
+//         callback(err);
+//       } else {
+//         return callback(null, trashNote.status);
+//       }
+//     }
+//   );
+// };
 noteModel.prototype.isTrashed = (noteID, trashNote, callback) => {
-  // console.log("dtaa in getrash notes==>",trashNote)
-  // console.log("dtaa in getrash notes==>",noteID)
   note.findOneAndUpdate(
     {
       _id: noteID
     },
     {
       $set: {
-        trash: trashNote.status
+        trash: trashNote,
+        archive: false
       }
     },
     (err, result) => {
       if (err) {
         callback(err);
       } else {
-        return callback(null, trashNote.status);
+        console.log("Result",result)
+        return callback(null, trashNote);
       }
     }
   );

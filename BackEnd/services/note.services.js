@@ -81,36 +81,46 @@ exports.deleteNote = (noteID, callback) => {
  * @param : paramID
  * @param : callback
  ***********************************************************************/
-exports.isTrashed = (paramID, callback) => {
-    // console.log("in services", paramID);
+// exports.isTrashed = (paramID, callback) => {
+//     // console.log("in services", paramID);
 
-    noteModel.getTrashStatus(paramID, (err, status) => {
+//     noteModel.getTrashStatus(paramID, (err, status) => {
+//         if (err) {
+//             callback(err);
+//         } else {
+//             if (status === true) {
+//                 let data = {
+//                     status: false
+//                 };
+//                 noteModel.isTrashed(paramID, data, (err, result) => {
+//                     if (err) {
+//                         callback(err);
+//                     } else {
+//                         return callback(null, result);
+//                     }
+//                 });
+//             } else if (status === false) {
+//                 let data = {
+//                     status: true
+//                 };
+//                 noteModel.isTrashed(paramID, data, (err, result) => {
+//                     if (err) {
+//                         callback(err);
+//                     } else {
+//                         return callback(null, result);
+//                     }
+//                 });
+//             }
+//         }
+//     });
+// };
+exports.isTrashed = (paramID, paramData, callback) => {
+    // console.log("in services", paramID, paramData);
+    noteModel.isTrashed(paramID, paramData, (err, result) => {
         if (err) {
             callback(err);
         } else {
-            if (status === true) {
-                let data = {
-                    status: false
-                };
-                noteModel.isTrashed(paramID, data, (err, result) => {
-                    if (err) {
-                        callback(err);
-                    } else {
-                        return callback(null, result);
-                    }
-                });
-            } else if (status === false) {
-                let data = {
-                    status: true
-                };
-                noteModel.isTrashed(paramID, data, (err, result) => {
-                    if (err) {
-                        callback(err);
-                    } else {
-                        return callback(null, result);
-                    }
-                });
-            }
+            return callback(null, result);
         }
     });
 };
