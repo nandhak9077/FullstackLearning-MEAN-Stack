@@ -95,7 +95,7 @@ export class RegisterComponent implements OnInit {
       data => {
         console.log(data);
         //snackbar to show messages.
-        this.snackBar.open("Registered successfully!!", "ok", {
+        this.snackBar.open("Registered successfully Check Your Mail", "ok", {
           duration: 5000
         });
        

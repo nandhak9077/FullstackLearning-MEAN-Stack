@@ -33,9 +33,9 @@ exports.createNote = (data, callback) => {
  * @param : data
  * @param : callback
  ********************************************************************/
-exports.getNotes = (labelData, callback) => {
-    console.log("in services",labelData)
-    noteModel.getNotes(labelData, (err, result) => {
+exports.getNotes = (userid, callback) => {
+    console.log("in services",userid)
+    noteModel.getNotes(userid, (err, result) => {
         if (err) {
             // console.log("service error");
             callback(err);

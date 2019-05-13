@@ -69,7 +69,7 @@ function noteModel() { }
 noteModel.prototype.addNotes = (objectNote, callback) => {
 console.log("data-->", objectNote.decoded.payload.user_id);
   const noteModel = new note({
-    "userID": objectNote.decoded.payload.user_id,
+    "userId": objectNote.decoded.payload.user_id,
     "title": objectNote.body.title,
     "description": objectNote.body.description,
     "color": objectNote.body.color,
@@ -106,8 +106,9 @@ console.log("data-->", objectNote.decoded.payload.user_id);
 //   );
 // };
 noteModel.prototype.getNotes = (id, callback) => {
+ 
   console.log("in model", id);
-  note.find({ userID: id.userId }, (err, result) => {
+  note.find({ userId: id }, (err, result) => {
     if (err) {
       callback(err);
     } else {

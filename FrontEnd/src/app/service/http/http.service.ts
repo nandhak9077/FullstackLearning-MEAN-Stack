@@ -68,13 +68,14 @@ export class HttpService {
   }
 
   getHttp(url) {
+    const userid=localStorage.getItem('userid');
     const httpTocken = {
       headers: new HttpHeaders({
         "content-Type": "application/json",
         token: localStorage.getItem("token")
       })
     };
-    return this.http.get(this.apiBaseurl + url, httpTocken);
+    return this.http.get(this.apiBaseurl + url+'/'+userid, httpTocken);
   }
   getHttpLabel(url) {
     const httpTocken = {

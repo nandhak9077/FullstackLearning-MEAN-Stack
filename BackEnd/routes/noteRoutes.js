@@ -16,7 +16,7 @@ const middle= require('../authentication/index')
 const upload = require ('../middleware/fileUpload')
 
 router.post('/createNote',middle.auth,  note.createNote);
-router.get("/getNotes",middle.auth, note.getNotes);
+router.get("/getNotes/:userId",middle.auth, note.getNotes);
 router.put('/isTrashed',middle.auth, note.isTrashed); 
 router.post('/deleteNote',middle.auth, note.deleteNote);
 

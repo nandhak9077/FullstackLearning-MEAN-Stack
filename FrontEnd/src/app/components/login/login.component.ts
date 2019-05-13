@@ -68,11 +68,15 @@ export class LoginComponent implements OnInit {
           console.log("AAAAAAAAAAA",data);
           this.response = data;
           console.log("BBBBBB",data.data[0]._id);
-          
+          localStorage.removeItem("token");
           localStorage.setItem("token", this.response.token);
+          localStorage.removeItem("userid");
           localStorage.setItem("userid", data.data[0]._id);
+          localStorage.removeItem("email");
           localStorage.setItem("email", this.emailFormControl.value);
+          localStorage.removeItem("name");
           localStorage.setItem("name", data.data[0].firstname);
+          localStorage.removeItem("image");
           localStorage.setItem("image",  data.data[0].profilePic);
           // localStorage.setItem('lname',this.response.lname)
           //snackbar to show messages.

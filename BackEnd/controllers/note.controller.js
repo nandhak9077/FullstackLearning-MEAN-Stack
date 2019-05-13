@@ -73,7 +73,9 @@ exports.getNotes = (req, res) => {
     const labelData = {
         userID: req.decoded.payload.user_id
     };
-    noteService.getNotes(req, (err, result) => {
+    console.log("BBBBB",req.params.userId);
+    const userId=req.params.userId;
+    noteService.getNotes(userId, (err, result) => {
         if (err) {
             responseResult.status = false;
             responseResult.message = "Failed to retrieve note from DB!";
