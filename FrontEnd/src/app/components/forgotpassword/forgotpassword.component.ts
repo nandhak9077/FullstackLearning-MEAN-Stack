@@ -50,7 +50,7 @@ export class ForgotpasswordComponent implements OnInit {
     console.log(requestBody);
     this.userService.forgotpassword(requestBody).subscribe(data => {
       console.log("At forget password comp: ",data);
-      this.snackBar.open("Check your mail", "ok", { duration: 5000 });
+      this.snackBar.open("Check your mail now", "ok", { duration: 5000 });
     },
       error => {
         console.log("error at forget comp: ",error);

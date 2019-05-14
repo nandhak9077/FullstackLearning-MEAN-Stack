@@ -75,13 +75,15 @@
         <mat-icon><img src="../../../assets/image/outline-apps-24px.svg" /></mat-icon>
       </button>
       <mat-menu #apps="matMenu" fxLayout="row rap">
-        <button mat-menu-item (click)="goToUrl()"><img src="../../../assets/image/icons8-google.svg"></button>
-        <button mat-menu-item (click)="goToUrl1()"><img src="../../../assets/image/icons8-google-drive.svg"></button>
+       <!-- <div> <span><button mat-menu-item (click)="goToUrl()"><img src="../../../assets/image/icons8-google.svg"></button></span></div>
+        <span><button mat-menu-item (click)="goToUrl1()"><img src="../../../assets/image/icons8-google-drive.svg"></button></span> -->
         <button mat-menu-item (click)="goToUrl2()"><img src="../../../assets/image/icons8-google-maps.svg"></button>
         <button mat-menu-item (click)="goToUrl3()"><img src="../../../assets/image/icons8-play-button.svg"></button>
         <button mat-menu-item (click)="goToUrl4()"><img src="../../../assets/image/icons8-gmail.svg"></button>
       </mat-menu>
 
+
+      
 
     </div>
 
@@ -109,17 +111,18 @@
           <div class="profileName">
             {{username}}
           </div>
-          <div class="profileEmail">
-            {{email}}
-          </div>
+          
         </div>
       </div>
-
+      
+      <div class="profileEmail">
+        {{email}}
+      </div>
       <input fxHide class="image" type="file" (change)="fileUpload($event)" #imageSelectFile>
 
-      <mat-divider></mat-divider>
+     
       <button class="signout" mat-flat-button (click)="signout()" (click)='openSnackBar()'>
-        Sign out
+        Logout
       </button>
 
 

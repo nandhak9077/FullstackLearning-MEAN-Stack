@@ -55,6 +55,7 @@ export class DisplaynoteComponent implements OnInit, OnChanges {
   @Input() cond;
   pinnedValue;
   item:any[];
+  notemessage:any;
 
   model;
   flag1 = true;

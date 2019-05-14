@@ -22,7 +22,7 @@ export class TrashComponent implements OnInit {
   deletedcards = [];
   card = [];
   cards = [];
-
+array = [];
   wrap: string = "wrap";
   direction;
   view;
@@ -84,13 +84,15 @@ export class TrashComponent implements OnInit {
   //     err => console.log(err);
   // }
   openDialog(deletedcards): void {
+    console.log("this is deletedcards",deletedcards);
+   // console.log("this is cards", cards)
     const dialogRef = this.dialog.open(EmptytrashComponent, {
       width: '350px',
-      data: {cards:deletedcards}
+      data: {cards:deletedcards,trash : true}
     });
-
+   
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed here');
+      console.log("this is cards",result)
       this.cards = result;
     });
   } 

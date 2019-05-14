@@ -28,7 +28,7 @@ import { from } from 'rxjs';
 })
 export class DashboardComponent implements OnInit, OnDestroy {
   mobileQuery: MediaQueryList;
-  message: string = "Fundoo";
+  message: string = "Keep";
   Search: string;
   labelList: any;
   email: any;
@@ -91,7 +91,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     window.location.reload();
   }
   note() {
-    this.message = "Fundoo"
+    this.message = "Keep"
     this.router.navigate(['dashboard/note']);
   }
   reminders() {
