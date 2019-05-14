@@ -43,7 +43,7 @@
 
       <!-- grid view and list view  -->
 
-      <button fxHide.xs="100" mat-icon-button color="basic" id="grid" matTooltip="Grid view">
+      <button fxHide.xs="100" mat-icon-button color="basic" id="grid" matTooltip="List view">
         <mat-icon id="gridlist">
           <img *ngIf="islist" (click)="changeview()" src="../../../assets/image/outline-view_agenda-24px.svg" />
           <img isClicked *ngIf="isClicked" (click)="changeview()" src="../../../assets/image/download.svg" /></mat-icon>
@@ -51,7 +51,7 @@
 
       <!-- settings button  -->
 
-      <!-- <button
+      <button
         mat-icon-button
         [matMenuTriggerFor]="menu"
         colour="basic"
@@ -62,12 +62,10 @@
         /></mat-icon>
       </button>
       <mat-menu #menu="matMenu">
-        <button mat-menu-item>Settings</button>
-        <button mat-menu-item>Send feedback</button>
+        <button mat-menu-item>Settings works</button>
         <button mat-menu-item>Help</button>
-        <button mat-menu-item>App downloads</button>
-        <button mat-menu-item>Keyboard Shortcuts</button>
-      </mat-menu> -->
+       
+      </mat-menu>
 
       <!-- app routs to appilaction links -->
 
@@ -75,8 +73,7 @@
         <mat-icon><img src="../../../assets/image/outline-apps-24px.svg" /></mat-icon>
       </button>
       <mat-menu #apps="matMenu" fxLayout="row rap">
-       <!-- <div> <span><button mat-menu-item (click)="goToUrl()"><img src="../../../assets/image/icons8-google.svg"></button></span></div>
-        <span><button mat-menu-item (click)="goToUrl1()"><img src="../../../assets/image/icons8-google-drive.svg"></button></span> -->
+     
         <button mat-menu-item (click)="goToUrl2()"><img src="../../../assets/image/icons8-google-maps.svg"></button>
         <button mat-menu-item (click)="goToUrl3()"><img src="../../../assets/image/icons8-play-button.svg"></button>
         <button mat-menu-item (click)="goToUrl4()"><img src="../../../assets/image/icons8-gmail.svg"></button>

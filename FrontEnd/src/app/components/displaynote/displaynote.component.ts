@@ -10,6 +10,7 @@ import { Message } from "@angular/compiler/src/i18n/i18n_ast";
 import { MockResourceLoader } from "@angular/compiler/testing";
 import { MatSnackBar } from "@angular/material";
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { CurrentViewService } from 'src/app/service/currentview/current-view.service';
 export interface DialogData {
   labelsList: any;
   array: [];
@@ -76,7 +77,8 @@ export class DisplaynoteComponent implements OnInit, OnChanges {
     public http: HttpService,
     public dialog: MatDialog,
     private noteService: NoteServiceService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private view : CurrentViewService
   ) {
     console.log('constructor run');
 
@@ -88,7 +90,10 @@ export class DisplaynoteComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    console.log('init run');
+    console.log("jshdgfhjsgdfjhgs");
+    this.view.currentView.subscribe(
+      response=>this.gridView=response
+    )
 
   }
 
@@ -296,4 +301,5 @@ export class DisplaynoteComponent implements OnInit, OnChanges {
           err => console.log(err)
         );
   }
+  gridView:boolean;
 }

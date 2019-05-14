@@ -7,6 +7,7 @@ import { NoteServiceService } from "src/app/service/noteService/note-service.ser
   styleUrls: ["./note.component.scss"]
 })
 export class NoteComponent implements OnInit {
+  
   allcards = [];
   card = [];
   addnote: any;
@@ -31,7 +32,7 @@ export class NoteComponent implements OnInit {
   ngOnInit() {
     this.getCards();
     this.noteService.getView().subscribe((res: any) => {
-      // debugger
+    
       console.log("note====>", res);
 
       this.view = res;
@@ -62,33 +63,11 @@ export class NoteComponent implements OnInit {
       console.log("all card is ", this.cards);
     });
   }
-  // getCards() {
-  //   this.http.getHttp("getNotes").subscribe(data => {
-  //     console.log("wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",data);
-  //     console.log(data['data'],"ghghfghvfghfghghghdf");
-  //     // this.cards = data['data'];
-  //    var data1=data['data'];
-  //    this.cards=[];
-  //    this.allcards=[];
-  //     for(let i=0;i<data1.length;i++){
-  //       if(!data1[i].archive && !data1[i].trash && data1[i].pinned){
-  //         this.cards.push(data1[i])
-  //       }
-  //       else if(!data1[i].archive && !data1[i].trash && !data1[i].pinned){
-  //         this.allcards.push(data1[i])
-  //       }
-  //     }
-  //     this.cards = this.cards.reverse();
-  //     this.allcards=this.allcards.reverse();
-  //     console.log('all card is ',this.cards);
-
-  //   });
-  // }
+  
   recievemessage($event) {
     this.addnote = $event;
     console.log(this.addnote, "......addnote");
-    // this.allcards.push(this.addnote);
-    // this.ngOnInit();
+    
     this.getCards();
   }
   getPinCard($event) {
