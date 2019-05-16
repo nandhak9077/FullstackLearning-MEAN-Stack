@@ -417,7 +417,7 @@ noteModel.prototype.updateImage = (noteID, updateNote, callback) => {
 
 var labelSchema = new mongoose.Schema(
   {
-    userID: {
+    userId: {
       type: Schema.Types.ObjectId,
       ref: "userSchema"
     },
@@ -440,7 +440,10 @@ var label = mongoose.model("Label", labelSchema);
  *********************************************************************************************/
 noteModel.prototype.addLabel = (labelData, callback) => {
   console.log("ultimate save", labelData);
-  const Data = new label(labelData);
+  const Data = new label({
+    "userId": labelData.decoded.payload.user_id,
+    "label": labelData.body.label
+  });
   Data.save((err, result) => {
     if (err) {
       console.log(err);
@@ -457,16 +460,28 @@ noteModel.prototype.addLabel = (labelData, callback) => {
  * @param : id
  * @param : callback
  *********************************************************************************************/
+// noteModel.prototype.getLabels = (id, callback) => {
+//   console.log("in model", id.userID);
+//   label.find({ userID: id.userId }, (err, result) => {
+//     if (err) {
+//       callback(err);
+//     } else {
+//       console.log("labels", result);
+//       return callback(null, result);
+//     }
+//   });
+// };
 noteModel.prototype.getLabels = (id, callback) => {
-  console.log("in model", id.userID);
-  label.find({ userID: id.userId }, (err, result) => {
+ 
+  console.log("in model", id);
+  label.find({ userId: id }, (err, result) => {
     if (err) {
       callback(err);
     } else {
-      console.log("labels", result);
+      console.log("", result);
       return callback(null, result);
     }
-  });
+  })
 };
 
 /*****************************************************************************************************

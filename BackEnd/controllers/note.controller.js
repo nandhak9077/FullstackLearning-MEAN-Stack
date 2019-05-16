@@ -470,41 +470,65 @@ exports.updateImage = (req, res) => {
  * @param : req
  * @param : res
  ******************************************************************************/
-exports.addLabel = (req, res) => {
+// exports.addLabel = (req, res) => {
    
 
-    try {
+//     try {
         
-        req
-            .checkBody("label", "label required")
-            .not()
-            .isEmpty();
-        var errors = req.validationErrors();
-        var response = {};
-        if (errors) {
-            response.status = false;
-            response.error = errors;
-            return res.status(422).send(response);
-        } else {
-            var responseResult = {};
-            const labelData = {
-                userID: req.decoded.id,
-                label: req.body.label
-            };
-            noteService.addLabel(labelData, (err, result) => {
-                if (err) {
-                    responseResult.status = false;
-                    responseResult.error = err;
-                    res.status(500).send(responseResult);
-                } else {
-                    responseResult.status = true;
-                    responseResult.data = result;
-                    res.status(200).send(responseResult);
-                }
-            });
-        }
-    } catch (error) {
-        res.send(error);
+//         req
+//             .checkBody("label", "label required")
+//             .not()
+//             .isEmpty();
+//         var errors = req.validationErrors();
+//         var response = {};
+//         if (errors) {
+//             response.status = false;
+//             response.error = errors;
+//             return res.status(422).send(response);
+//         } else {
+//             var responseResult = {};
+//             const labelData = {
+//                 userID: req.decoded.id,
+//                 label: req.body.label
+//             };
+//             noteService.addLabel(labelData, (err, result) => {
+//                 if (err) {
+//                     responseResult.status = false;
+//                     responseResult.error = err;
+//                     res.status(500).send(responseResult);
+//                 } else {
+//                     responseResult.status = true;
+//                     responseResult.data = result;
+//                     res.status(200).send(responseResult);
+//                 }
+//             });
+//         }
+//     } catch (error) {
+//         res.send(error);
+//     }
+// };
+exports.addLabel = (req, res) => {
+    try {
+        var responseResult = {};
+        noteService.addLabel(req, (err, result) => {
+            if (err) {
+                responseResult.status = false;
+                responseResult.message = "Failed to create note!";
+                responseResult.error = err;
+                res.status(500).send(responseResult);
+            } else {
+                var userNote = {
+                    note: result
+                };
+                responseResult.status = true;
+                responseResult.message = result;
+                responseResult.message = "label retrieved from DB successfully";
+                responseResult.data = userNote;
+                res.status(200).send(responseResult);
+            }
+        });
+    } catch (err) {
+        res.send("error in creating note", err);
     }
 };
 /**********************************************************************************
@@ -526,7 +550,9 @@ exports.getLabels = (req, res) => {
             const labelData = {
                 userID: req.decoded.payload.user_id
             };
-            noteService.getLabels(labelData, (err, result) => {
+            console.log("BBBBB",req.params.userId);
+            const userId=req.params.userId;
+            noteService.getLabels(userId, (err, result) => {
                 if (err) {
                     responseResult.status = false;
                     responseResult.error = err;

@@ -272,16 +272,29 @@ exports.addLabel = (labelData, callback) => {
  * @param : labelData
  * @param : callback
  ***************************************************************************************/
-exports.getLabels = (labelData, callback) => {
-    console.log("in services", labelData);
-    noteModel.getLabels(labelData, (err, result) => {
+// exports.getLabels = (labelData, callback) => {
+//     console.log("in services", labelData);
+//     noteModel.getLabels(labelData, (err, result) => {
+//         if (err) {
+//             callback(err);
+//         } else {
+//             return callback(null, result);
+//         }
+//     });
+// };
+exports.getLabels = (userid, callback) => {
+    console.log("in services",userid)
+    noteModel.getLabels(userid, (err, result) => {
         if (err) {
+            // console.log("service error");
             callback(err);
         } else {
-            return callback(null, result);
+            //    console.log("In service", result);
+            callback(null, result);
         }
     });
 };
+
 /*******************************************************************
  *
  * @param : labelData

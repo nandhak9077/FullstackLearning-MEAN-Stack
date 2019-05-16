@@ -31,7 +31,7 @@ router.put('/editDescription', middle.auth, note.editDescription);
 
 
 router.post('/addLabel', middle.auth, note.addLabel);
-router.get('/getLabels', middle.auth, note.getLabels);
+router.get('/getLabels/:userId', middle.auth, note.getLabels);
 router.post('/deleteLabel', middle.auth, note.deleteLabel);
 router.put('/updateLabel', middle.auth, note.updateLabel);
 
